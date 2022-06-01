@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Island {
+  categoryId Int @map("CategoryId")
+  islandId Int @id @map("IslandId")
+  atoll String @map("Atoll")
+  island String @map("Island")
+  minutes Int @map("Minutes")
+  latitude Int? @map("Latitude")
+  longitude Int? @map("Longitude")
+  status Int @map("Status")
+}
+
+model PrayerTimes {
+  categoryId Int @unique @map("CategoryId")
+  date Int @map("Date")
+  fajr Int @map("Fajuru")
+  sunrise Int @map("Sunrise")
+  dhuhr Int @map("Dhuhr")
+  asr Int @map("Asr")
+  maghrib Int @map("Maghrib")
+  isha Int @map("Isha")
+}
